@@ -9,7 +9,7 @@ namespace Modul11
     /// <summary>
     /// Герой "Hunter"
     /// </summary>
-    class Hunter : Hero
+    class Hunter : Hero, IRampage
     {
         public override void Motto() { Console.WriteLine($"{this.Name}: Охота началась!"); }
 
@@ -22,6 +22,7 @@ namespace Modul11
         public Hunter(string Name, byte Level, uint HitPoint)
             : base(Name, Level, HitPoint)
         {
+            this.Charge = 3;
         }
 
         /// <summary>
@@ -40,6 +41,24 @@ namespace Modul11
             return (Hunter.randomize.Next(4) != 0) ?
                 this.Attack() : 
                 this.Attack() + (uint)Hunter.randomize.Next(10,20);
+        }
+
+        //IRampage
+
+        public int Charge { get; set; }
+
+        public void Recharge()
+        {
+            this.Charge = 3;
+        }
+
+        public void UltraAttack(Hero Target)
+        {
+            for (int i = 0; i < this.Charge; i++)
+            {
+                Target.Attacked(10);
+            }
+            this.Charge = 0;
         }
     }
 }

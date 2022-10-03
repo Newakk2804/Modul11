@@ -46,6 +46,7 @@
     <Compile Include="Druid.cs" />
     <Compile Include="Hero.cs" />
     <Compile Include="Hunter.cs" />
+    <Compile Include="IRampage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Warrior.cs" />

@@ -9,9 +9,9 @@ namespace Modul11
     /// <summary>
     /// Герой
     /// </summary>
-    class Hero
+    abstract class Hero
     {
-        public virtual void Motto() { Console.WriteLine("Сражаемся ради победы!"); }
+        public abstract void Motto();
 
         protected static uint defIndexName;
         protected static Random randomize;
@@ -80,11 +80,15 @@ namespace Modul11
             else { this.hitPoint = this.hitPoint + Hp <= this.maxHitPoint ? this.hitPoint + Hp : this.maxHitPoint; }
         }
 
+        public uint Attack() { return 10; }
+
         /// <summary>
         /// Метод, определяющий логику атаки
         /// </summary>
-        /// <returns></returns>
-        public uint Attack() { return 10; }
+        public void Attack(Hero Target)
+        {
+            if (Target != this) Target.Attacked(10);
+        }
 
         /// <summary>
         /// Метод, определяющий логику в случае атаки другим героем

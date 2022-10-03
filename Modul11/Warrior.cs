@@ -9,7 +9,7 @@ namespace Modul11
     /// <summary>
     /// Герой "Warrior"
     /// </summary>
-    class Warrior : Hero
+    class Warrior : Hero, IRampage
     {
         public override void Motto() { Console.WriteLine($"{this.Name}: Мой молот готов служить всезнающему!"); }
 
@@ -25,6 +25,7 @@ namespace Modul11
             : base(Name, Level, HitPoint)
         {
             this.blockDamage = 2;
+            this.Charge = 5;
         }
 
         /// <summary>
@@ -42,5 +43,24 @@ namespace Modul11
         {
             base.Attacked(Damage / blockDamage);
         }
+
+        //IRampage
+
+        public int Charge { get; set; }
+
+        public void Recharge()
+        {
+            this.Charge = 5;
+        }
+
+        public void UltraAttack(Hero Target)
+        {
+            for (int i = 0; i < this.Charge; i++)
+            {
+                Target.Attacked(10);
+            }
+            this.Charge = 0;
+        }
+
     }
 }
