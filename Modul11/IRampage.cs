@@ -20,7 +20,7 @@ namespace Modul11
         /// Логика перезарядки
         /// </summary>
         void Recharge();
-
+        
         /// <summary>
         /// Логика ультра атаки
         /// </summary>
